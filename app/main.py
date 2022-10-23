@@ -11,7 +11,6 @@ app = FastAPI()
 uname = platform.uname()
 
 
-
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
@@ -26,7 +25,14 @@ def read_host():
 def read_random():
     return random.randrange(1, 1000000)
 
+
 @app.get("/system")
 def read_print():
-    return{"System": {uname.system}, "Node Name": {uname.node}, "Release": {uname.release}, "Version": {uname.version}, "Machine": {uname.machine}, "Processor": {uname.processor}}
-    
+    return {
+        "System": {uname.system},
+        "Node Name": {uname.node},
+        "Release": {uname.release},
+        "Version": {uname.version},
+        "Machine": {uname.machine},
+        "Processor": {uname.processor},
+    }
